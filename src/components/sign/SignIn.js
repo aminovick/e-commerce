@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import "./signIn.style.scss";
 import FormInput from "../formInput/FormInput";
-import CustomButton from '../customButton/CustomButton'
+import CustomButton from "../customButton/CustomButton";
+import AuthGoogle from "../authentification/AuthGoogle";
 class SignIn extends Component {
   state = {
     email: "",
@@ -19,7 +20,7 @@ class SignIn extends Component {
   render() {
     return (
       <div className="sign-in">
-        <h2>Je ai déjà un compte </h2>
+        <h2>J'ai déjà un compte </h2>
         <span>se connecter avec ton Email et Password</span>
         <form onSubmit={this.hundelSubmit}>
           <FormInput
@@ -36,9 +37,10 @@ class SignIn extends Component {
             hundelChange={this.hundelChange}
             label="Password"
           />
-          <CustomButton type="submit" >
-              Sign
-          </CustomButton>
+          <div className="buttons">
+          <CustomButton type="submit">Sign</CustomButton>
+          <AuthGoogle/>
+          </div>
         </form>
       </div>
     );
