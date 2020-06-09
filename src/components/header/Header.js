@@ -3,10 +3,17 @@ import { Link } from "react-router-dom";
 import { signIn, signOut } from "../../store/actions";
 import { connect } from "react-redux";
 import "./header.style.scss";
-import { ReactComponent as Logo } from "../assest/crown.svg";
+import { ReactComponent as Logo } from "../../assest/crown.svg";
+import CarteDropDown from "../carteDropDown/CarteDropDown";
+import IconBag from "../icoBag/IconBag";
 class Header extends Component {
   singOutClick = () => {
     window.gapi.auth2.getAuthInstance().signOut();
+  };
+  renderCarteDrop = () => {
+    if (this.props.hiden === true) {
+      return <CarteDropDown />;
+    }
   };
   render() {
     return (
@@ -30,15 +37,18 @@ class Header extends Component {
               Sign In
             </Link>
           )}
+          <IconBag />
+          {this.props.hiden ? null : <CarteDropDown />}
         </div>
       </div>
     );
   }
 }
 const mapStateToprops = (state) => {
-  console.log(state.auth.isSignedIn);
+  console.log(state.carte);
   return {
     isSignedIn: state.auth.isSignedIn,
+    hiden: state.carte.hidden,
   };
 };
 export default connect(mapStateToprops, { signIn, signOut })(Header);
