@@ -6,26 +6,27 @@ import HomePage from "./pages/HomePage";
 import ShopPage from "./pages/shop/ShopPage";
 import Header from "./components/header/Header";
 import SignInSignUp from "./pages/sign-in-&-sign-up/SignInSignUp";
-
+import ChckoutCaisse from "./pages/chckoutCaisse/ChckoutCaisse";
 class App extends React.Component {
-  render(){
-  return (
-    <div>
-      <Header />
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route exact path="/shop" component={ShopPage} />
-        <Route
-          exact
-          path="/sign"
-          render={() =>
-            this.props.isSignedIn ? <Redirect to="/" /> : <SignInSignUp />
-          }
-        />
-      </Switch>
-    </div>
-  );
-}
+  render() {
+    return (
+      <div>
+        <Header />
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route exact path="/shop" component={ShopPage} />
+          <Route exact path="/cheCkout" component={ChckoutCaisse} />
+          <Route
+            exact
+            path="/sign"
+            render={() =>
+              this.props.isSignedIn ? <Redirect to="/" /> : <SignInSignUp />
+            }
+          />
+        </Switch>
+      </div>
+    );
+  }
 }
 const mapStateToprops = (state) => {
   return {

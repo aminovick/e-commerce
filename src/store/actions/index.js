@@ -1,4 +1,4 @@
-import { SING_IN, SING_OUT, TOGGLE_ICON } from "../Type";
+import { SING_IN, SING_OUT, TOGGLE_ICON, ADD_ITEMS } from "../Type";
 export const signIn = (id) => {
   return {
     type: SING_IN,
@@ -17,3 +17,9 @@ export const toggleIcon = () => {
     type: TOGGLE_ICON,
   };
 };
+export const addItems=items=>{
+  return{
+    type: ADD_ITEMS,
+    payload:items
+  }
+}

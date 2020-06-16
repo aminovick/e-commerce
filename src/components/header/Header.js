@@ -45,7 +45,6 @@ class Header extends Component {
   }
 }
 const mapStateToprops = (state) => {
-  console.log(state.carte);
   return {
     isSignedIn: state.auth.isSignedIn,
     hiden: state.carte.hidden,
