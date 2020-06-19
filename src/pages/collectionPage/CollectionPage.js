@@ -1,29 +1,29 @@
 import React from "react";
 import "./collectionPage.style.scss";
 import { connect } from "react-redux";
+import CollectionItem from "../../components/collectionItems/CollectionItem";
 
 const CollectionPage = ({ collection }) => {
-  console.log(collection);
+  const { title, items } = collection;
   return (
     <div className="collection-page">
-      <h1>frere</h1>
+      <h2 className="title">{title}</h2>
+      <div className="items">
+        {items.map((item) => (
+          <CollectionItem key={item.id} item={item} />
+        ))}
+      </div>
     </div>
   );
 };
 const mapStateToProps = (state, ownProps) => {
   return {
-    collection: state.shopReducer.collections.find(
-      (collection) =>
-        collection.id === COLLECTION_ID[ownProps.match.params.collectionId]
+    collection: Object.values(state.shopReducer.collections).find(
+      () =>
+         [ownProps.match.params.collectionId]
     ),
   };
 };
-const COLLECTION_ID = {
-  hats: 1,
-  sneakers: 2,
-  jackets: 3,
-  womens: 4,
-  mens: 5,
-};
+
 
 export default connect(mapStateToProps)(CollectionPage);
