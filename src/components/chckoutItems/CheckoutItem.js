@@ -2,6 +2,7 @@ import React from "react";
 import "./CheckoutItem.style.scss";
 import { deleteItem, removeItem, addItems } from "../../store/actions";
 import { connect } from "react-redux";
+
 const CheckoutItem = ({ items, deletItem, addItem, removeItems }) => {
   const { imageUrl, name, quantity, price } = items;
   return (
